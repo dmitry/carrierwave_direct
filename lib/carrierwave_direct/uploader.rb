@@ -40,11 +40,11 @@ module CarrierWaveDirect
     end
 
     def key
-      @key ||= "#{store_dir}/#{guid}/#{FILENAME_WILDCARD}"
+      @key ||= path || "#{store_dir}/#{guid}/#{FILENAME_WILDCARD}"
     end
 
     def has_key?
-      @key.present? && !(@key =~ /#{Regexp.escape(FILENAME_WILDCARD)}\z/)
+      key.present? && !(key =~ /#{Regexp.escape(FILENAME_WILDCARD)}\z/)
     end
 
     def acl
